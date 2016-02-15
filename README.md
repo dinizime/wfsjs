@@ -12,3 +12,4 @@ A simple implementation of a RESTFul JSON-oriented Web Feature Service (WFS) usi
 * Mongoose
 * Valid-url
 * Jade
+* Leaflet
