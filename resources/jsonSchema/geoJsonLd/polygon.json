@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "One geometry as defined by GeoJSON-LD",
+    "type": "object",
+    "id": "http://json-schema.org/geojsonld/geometry/polygon.json#",
+    "title": "Polygon",
+    "required": [ "type", "@type", "coordinates" ],
+    "properties": {
+        "type": { "enum": [ "Polygon" ] },
+        "@type": {
+            "oneOf": [
+                { "enum": [ "Polygon" ] },
+                { "allOf": [
+                    {"type": "array",
+                        "items": [{"enum": [ "Polygon" ] }]},
+                    {"type": "array",
+                        "items": { "type": "string"}}
+                ]
+                }
+            ]
+        },
+        "coordinates": { "$ref": "#/definitions/polygon" }
+    },
+    "definitions": {
+        "position": {
+            "description": "A single position",
+            "type": "array",
+            "minItems": 2,
+            "items": { "type": "number" },
+            "additionalItems": false
+        },
+        "positionArray": {
+            "description": "An array of positions",
+            "type": "array",
+            "items": { "$ref": "#/definitions/position" }
+        },
+        "lineString": {
+            "description": "An array of two or more positions",
+            "allOf": [
+                { "$ref": "#/definitions/positionArray" },
+                { "minItems": 2 }
+            ]
+        },
+        "linearRing": {
+            "description": "An array of four positions where the first equals the last",
+            "allOf": [
+                { "$ref": "#/definitions/positionArray" },
+                { "minItems": 4 }
+            ]
+        },
+        "polygon": {
+            "description": "An array of linear rings",
+            "type": "array",
+            "items": { "$ref": "#/definitions/linearRing" }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+	"geojson": "http://ld.geojson.org/vocab#",
+	"Feature": "geojson:Feature",
+	"FeatureCollection": "geojson:FeatureCollection",
+	"GeometryCollection": "geojson:GeometryCollection",
+	"LineString": "geojson:LineString",
+	"MultiLineString": "geojson:MultiLineString",
+	"MultiPoint": "geojson:MultiPoint",
+	"MultiPolygon": "geojson:MultiPolygon",
+	"Point": "geojson:Point",
+	"Polygon": "geojson:Polygon",
+	"bbox": {
+		"@container": "@list",
+		"@id": "geojson:bbox"
+	},
+	"coordinates": "geojson:coordinates",
+	"features": {
+		"@container": "@set",
+		"@id": "geojson:features"
+	},
+	"geometry": "geojson:geometry",
+	"properties": "geojson:properties",
+	"crs": {"@id": "geojson:crs", "@type": "@id"},
+	"id": "geojson:id",
+	"type": "geojson:type",
+	"bronactualiteit": "http://example.com/bronactualiteit",
+	"bronnauwkeurigheid": "http://example.com/bronnauwkeurigheid",
+	"objectBeginTijd": "http://example.com/objectBeginTijd",
+	"versieBeginTijd": "http://example.com/versieBeginTijd",
+	"visualisatieCode": "http://example.com/visualisatieCode",
+	"tdnCode": "http://example.com/tdnCode",
+	"hoogteklasse": "http://example.com/hoogteklasse",
+	"hoogteniveau": "http://example.com/hoogteniveau",
+	"status": "http://example.com/status",
+	"typeGebouw": "http://example.com/typeGebouw"
+}
+
+

@@ -1,0 +1,10 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://json-schema.org/geojsonld/bbox.json#",
+    "title": "bbox",
+    "description": "A bounding box as defined by GeoJSON-LD",
+    "FIXME": "unenforceable constraint: even number of elements in array",
+    "type": "array",
+    "minItems": 4,
+    "items": { "type": "number" }
+}

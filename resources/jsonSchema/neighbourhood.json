@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://json-schema.org/geojsonld/neighbourhood.json#",
+    "title": "neighbourhood",
+    "description": "Neighbourhood GeoJSON features",
+    "type": "object",
+    "allOf": [
+        { "oneOf": [
+            {
+                "properties": {
+                    "features": {
+                        "type": "array",
+                        "items": { "$ref": "#/definitions/neighbourhood" }
+                    }
+                },
+                "required": ["features"]
+            },
+            {"$ref": "#/definitions/neighbourhood"}
+        ]
+        },
+        {"$ref": "http://json-schema.org/geojsonld/geojsonld.json#" }
+    ],
+    "definitions": {
+        "neighbourhood": {
+                "properties": {
+                    "properties": {
+                        "type": "object",
+                        "properties": {
+                            "bu_code": {"type": "string"},
+                            "bu_naam": {"type": "string"},
+                            "gm_naam": {"type": "string"},
+                            "aant_inw": {"type": "number"},
+                            "aant_man": {"type": "number"},
+                            "aant_vrouw": {"type": "number"}
+                        },                      
+                        "required": ["bu_code", "bu_naam", "gm_naam", "aant_inw", "aant_man", "aant_vrouw"]           
+                    },
+                    "geometry": 
+                    {"oneOf": [
+                        {"$ref": "http://json-schema.org/geojsonld/geometry/polygon.json#"},
+                        {"$ref": "http://json-schema.org/geojsonld/geometry/multipolygon.json#"}
+                    ]}
+                },
+                "required": ["properties", "geometry"]
+        }
+    }
+}

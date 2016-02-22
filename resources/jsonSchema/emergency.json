@@ -1,0 +1,31 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://json-schema.org/geojsonld/emergency.json#",
+    "title": "emergency building",
+    "description": "Emergency Building GeoJSON features",
+    "type": "object",
+    "allOf": [
+        { "oneOf": [
+            {
+                "properties": {
+                    "features": {
+                        "type": "array",
+                        "items": { "$ref": "#/definitions/emergency" }
+                    }
+                },
+                "required": ["features"]
+            },
+            {"$ref": "#/definitions/emergency"}
+        ]
+        },
+        { "$ref": "http://json-schema.org/geojsonld/geojsonld.json#" }
+    ],
+    "definitions": {
+        "emergency": {
+                "properties": {
+                    "geometry": {"$ref": "http://json-schema.org/geojsonld/geometry/point.json#"}
+                },
+                "required": ["geometry"]
+        }
+    }
+}

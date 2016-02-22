@@ -1,0 +1,47 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://json-schema.org/geojsonld/building.json#",
+    "title": "building",
+    "description": "Building GeoJSON features",
+    "type": "object",
+    "allOf": [
+        { "oneOf": [
+            {
+                "properties": {
+                    "features": {
+                        "type": "array",
+                        "items": { "$ref": "#/definitions/building" }
+                    }
+                },
+                "required": ["features"]
+            },
+            {"$ref": "#/definitions/building"}
+        ]
+        },
+        { "$ref": "http://json-schema.org/geojsonld/geojsonld.json#" }
+    ],
+    "definitions": {
+        "building": {
+                "properties": {
+                    "properties": {
+                        "type": "object",
+                        "properties": {
+                            "bronactualiteit": {"type": "string"},
+                            "bronnauwkeurigheid": {"type": "number"},
+                            "objectBeginTijd": {"type": "string"},
+                            "versieBeginTijd": {"type": "string"},
+                            "visualisatieCode": {"type": "number"},
+                            "tdnCode": {"type": "number"},
+                            "hoogteklasse": {"type": "string"},
+                            "hoogteniveau": {"type": "number"},
+                            "status": {"type": "string"},
+                            "typeGebouw": {"type": "string"}                                                                                                                
+                        },                      
+                        "required": ["bronactualiteit", "bronnauwkeurigheid", "objectBeginTijd", "versieBeginTijd", "visualisatieCode", "tdnCode", "hoogteklasse", "hoogteniveau", "status", "typeGebouw"]           
+                    },
+                    "geometry": {"$ref": "http://json-schema.org/geojsonld/geometry/polygon.json#"}
+                },
+                "required": ["properties", "geometry"]
+        }
+    }
+}

@@ -1,0 +1,567 @@
+{
+	"@context": {
+		"@language": "en",
+		"ows": "http://www.opengis.net/ows/1.1/",
+		"keywords": {"@id": "ows:keywords", "@container": "@set"},
+		"providerSite": {"@id": "ows:providerSite", "@type": "@id"},
+		"onlineResource": {"@id": "ows:onlineResource", "@type": "@id"},
+		"serviceType": {"@id": "ows:serviceType", "@type": "@id"},
+		"wfs": "http://www.example.com/wfs/",
+		"wps": "http://www.example.com/wps/",
+		"csw": "http://www.example.com/csw/",
+		"featureType": "wfs:featureType",
+		"process": "wps:featureType",
+		"geojson": "http://ld.geojson.org/vocab#",
+		"bbox": "geojson:bbox",
+		"inputFormat": "http://www.example.com/rest/inputFormat",
+		"hydra": "http://www.w3.org/ns/hydra/core#",
+		"ApiDocumentation": "hydra:ApiDocumentation",
+		"property": {
+			"@id": "hydra:property",
+			"@type": "@id"
+		},
+		"readonly": "hydra:readonly",
+		"writeonly": "hydra:writeonly",
+		"supportedClass": "hydra:supportedClass",
+		"supportedProperty": "hydra:supportedProperty",
+		"supportedOperation": "hydra:supportedOperation",
+		"method": "hydra:method",
+		"expects": {
+			"@id": "hydra:expects",
+			"@type": "@id"
+		},
+		"returns": {
+			"@id": "hydra:returns",
+			"@type": "@id"
+		},
+		"statusCodes": "hydra:statusCodes",
+		"code": "hydra:statusCode",
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+		"label": "rdfs:label",
+		"description": "rdfs:comment",
+		"domain": {
+			"@id": "rdfs:domain",
+			"@type": "@id"
+		},
+		"range": {
+			"@id": "rdfs:range",
+			"@type": "@id"
+		},
+		"subClassOf": {
+			"@id": "rdfs:subClassOf",
+			"@type": "@id"
+		}
+	},
+	"@id": "http://localhost:3001/wfs/capabilities",
+	"@type": "ApiDocumentation",
+	"entryPoint": "http://localhost:3001/wfs/",
+	"ows:serviceIdentification": {
+		"ows:title": "WFS RESTful Implementation",
+		"ows:abstract": "Prototype implementation of a RESTful WFS that serves features in GeoJSON-LD",
+		"keywords": ["JSON", "Netherlands"],
+		"serviceType": "wfs",
+		"ows:serviceTypeVersion": "2.0.2",
+		"ows:fees": "None",
+		"ows:accessConstraints": "None"
+	},
+	"ows:serviceProvider": {
+		"ows:providerName": "ITC",
+		"providerSite": "http://www.itc.nl",
+		"ows:serviceContact": {
+			"ows:individualName": "Felipe Diniz",
+			"ows:positionName": "Msc student",
+			"ows:contactInfo": {
+				"ows:phone": {
+					"ows:voice": "",
+					"ows:facsimile": ""
+				},
+				"ows:address": {
+					"ows:deliveryPoint": "Hengelosestraat 99",
+					"ows:city": "Enschede",
+					"ows:administrativeArea": "Overijssel",
+					"ows:postalCode": "7514 AE",
+					"ows:country": "The Netherlands",
+					"ows:eletronicEmailAddress": "f.decarvalhodiniz@student.utwente.nl"
+				},
+				"onlineResource": "",
+				"ows:hoursOfService": "24x7",
+				"ows:contactInstructions": "Email Felipe with any questions about the prototype."
+			},
+			"ows:role": "PointOfContact"
+		}
+	},
+	"supportedClass": [
+		{
+		"@id": "http://localhost:3001/wfs/neighbourhoods",
+		"@type": ["hydra:Class", "featureType"],
+		"subClassOf": null,
+		"ows:name": "neighbourhoods",
+		"ows:title": "Neighbourhoods",
+		"ows:abstract": "Neighbourhoods of Netherlands from PDOK",
+		"keywords": ["neighbourhood"],
+		"ows:supportedCRS": {
+			"ows:defaultCRS": "EPSG:4326",
+			"ows:otherCRS": [""]
+		},
+		"ows:outputFormats": ["text/html", "application/ext.geo+json"],
+		"ows:envelope": { "bbox": [-180,-90,180,90]},
+		"ows:metadata": "",
+		"type": ["Polygon", "MultiPolygon"],
+        "inputTypes": null,
+        "outputTypes": {
+            "neighbourhoods": {
+                "type": {"#set": {"#record": {"geom": "Polygon", "bu_code": "String", "bu_naam": "String", "gm_naam": "String", "aant_inw": "Integer", "aant_man": "Integer", "aant_vrouw": "Integer"}}}
+            }
+        },
+		"supportedOperation": [
+			{
+			"@type": "hydra:Operation",
+			"method": "GET",
+			"label": "Retrieves Neighbourhoods",
+			"description": null,
+			"inputFormat": null,
+			"expects": null,
+			"returns": "http://www.example.com/featureClass/neighbourhoods",
+            "preCondition": null,
+            "postCondition": {"#and": [
+                {"#eq": ["neighbourhoods.geom.crs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]},
+                {"#eq": ["neighbourhoods.geom.dimension", {"#literal": ["x","y"]}]},
+                {"#eq": ["neighbourhoods.geom.bbox", {"#literal": [5.64632270271647,51.7905891105699,6.0688524859275,52.0778905328816]}]},
+                {"#eq": ["neighbourhoods.geom.bboxFormat", {"#literal": "GeoJSON"}]},
+                {"#eq": ["neighbourhoods.geom.bboxCrs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]}
+            ]},
+			"statusCodes": [
+				{
+				"code": 404,
+				"description": "If no Neighbourhood entity was found."
+				},
+				{
+				"code": 406,
+				"description": "The required media type for output is not supported"
+				},
+				{
+				"code": 200,
+				"description": "Successful retrieval"
+				}
+			]
+			},
+			{
+			"@type": "hydra:Operation",
+			"method": "PUT",
+			"label": "Replaces an existing Neighbourhood entity",
+			"description": null,
+			"inputFormat": "application/ext.geo+json",
+			"expects": "http://www.example.com/featureClass/neighbourhoods",
+			"returns": "http://www.example.com/featureClass/neighbourhoods",
+			"statusCodes": [
+				{
+				"code": 404,
+				"description": "If the Neighbourhood entity wasn't found."
+				},
+				{
+				"code": 415,
+				"description": "If the input is an unsupported Media Type"
+				},
+				{
+				"code": 422,
+				"description": "If the input is invalid against the JSON-Schema"
+				},
+				{
+				"code": 204,
+				"description": "Successful update"
+				}
+			]
+			}
+		],
+		"supportedProperty": [
+			{
+			"property": {
+				"@type": "rdf:Property",
+				"label": "name",
+				"description": "The user's full name",
+				"domain": "vocab:User",
+				"range": "http://www.w3.org/2001/XMLSchema#string",
+				"supportedOperation": []
+			},
+			"hydra:title": "bu_code",
+			"hydra:description": "Code that identifies the neighbourhood",
+			"required": true,
+			"readonly": true,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "bu_naam",
+			"hydra:description": "Name of the neighbourhood",
+			"required": true,
+			"readonly": true,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "gm_naam",
+			"hydra:description": "Name of the Municipality",
+			"required": true,
+			"readonly": true,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "aant_inw",
+			"hydra:description": "Total population",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "aant_man",
+			"hydra:description": "Population male",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "aant_vrouw",
+			"hydra:description": "Population female",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			}
+		]
+		},
+		{
+		"@id": "http://localhost:3001/wfs/rivers",
+		"@type": ["hydra:Class", "featureType"],
+		"ows:name": "rivers",
+		"ows:title": "Rivers",
+		"ows:outputFormats": ["text/html", "application/ext.geo+json"],
+		"type": ["Polygon", "LineString"],
+        "inputTypes": null,
+        "outputTypes": {
+            "rivers": {
+                "type": {"#set": {"#record": {"geom": "Polygon", "name": "String", "length": "Real"}}}
+            }
+        },
+		"supportedOperation": [
+			{
+			"@type": "hydra:Operation",
+			"method": "GET",
+			"label": "Retrieves Rivers",
+			"description": null,
+			"inputFormat": null,
+			"expects": null,
+			"returns": "http://www.example.com/featureClass/rivers",
+            "preCondition": null,
+            "postCondition": {"#and": [
+                {"#eq": ["rivers.geom.crs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]},
+                {"#eq": ["rivers.geom.dimension", {"#literal": ["x","y"]}]},
+                {"#eq": ["rivers.geom.bbox", {"#literal": [5.91122,51.95818,5.93794,51.97531]}]},
+                {"#eq": ["rivers.geom.bboxFormat", {"#literal": "GeoJSON"}]},
+                {"#eq": ["rivers.geom.bboxCrs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]}
+            ]},
+			"statusCodes": [
+				{
+				"code": 404,
+				"description": "If no River entity was found."
+				},
+				{
+				"code": 406,
+				"description": "The required media type for output is not supported"
+				},
+				{
+				"code": 200,
+				"description": "Successful retrieval"
+				}
+			]
+			},
+			{
+			"@type": "hydra:Operation",
+			"method": "POST",
+			"label": "Insert Rivers",
+			"description": null,
+			"inputFormat": null,
+			"expects": "http://www.example.com/featureClass/rivers",
+			"returns": "http://www.example.com/featureClass/rivers",
+			"statusCodes": [
+				{
+				"code": 415,
+				"description": "If the input is an unsupported Media Type"
+				},
+				{
+				"code": 422,
+				"description": "If the input is invalid against the JSON-Schema"
+				},
+				{
+				"code": 201,
+				"description": "Successful insert"
+				}
+			]
+			}
+		],
+		"supportedProperty": [
+			{
+			"hydra:title": "code",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "bronactualiteit",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "bronnauwkeurigheid",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "objectBeginTijd",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "versieBeginTijd",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "visualisatieCode",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "tdnCode",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "breedteklasse",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "functie",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "hoofdafwatering",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "hoogteniveau",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "naamNL",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "status",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "typeInfrastructuurWaterdeel",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "typeWater",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "voorkomenWater",
+			"hydra:description": "",
+			"required": true,
+			"readonly": false,
+			"writeonly": false
+			}
+		]
+		},
+		{
+		"@id": "http://localhost:3001/wfs/emergency",
+		"@type": ["hydra:Class", "featureType"],
+		"ows:name": "emergency",
+		"ows:title": "Emergency Buildings",
+		"ows:outputFormats": ["text/html", "application/ext.geo+json"],
+		"type": ["Point"],
+        "inputTypes": null,
+        "outputTypes": {
+            "emergency": {
+                "type": {"#set": {"#record": {"geom": "Point", "name": "String", "address": "String"}}}
+            }
+        },
+		"supportedOperation": [
+			{
+			"@type": "hydra:Operation",
+			"method": "GET",
+			"label": "Retrieves Emergency Buildings",
+			"description": null,
+			"inputFormat": null,
+			"expects": null,
+			"returns": "http://www.example.com/featureClass/emergency",
+            "preCondition": null,
+            "postCondition": {"#and": [
+                {"#eq": ["emergency.geom.crs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]},
+                {"#eq": ["emergency.geom.dimension", {"#literal": ["x","y"]}]},
+                {"#eq": ["emergency.geom.bbox", {"#literal": [5.901460647583008,51.954131213374254,5.942659378051758,51.982554217750945]}]},
+                {"#eq": ["emergency.geom.bboxFormat", {"#literal": "GeoJSON"}]},
+                {"#eq": ["emergency.geom.bboxCrs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]}
+            ]},
+			"statusCodes": [
+				{
+				"code": 404,
+				"description": "If no Emergency Building entity was found."
+				},
+				{
+				"code": 406,
+				"description": "The required media type for output is not supported"
+				},
+				{
+				"code": 200,
+				"description": "Successful retrieval"
+				}
+			]
+			},
+			{
+			"@type": "hydra:Operation",
+			"method": "POST",
+			"label": "Insert Emergency Buildings",
+			"description": null,
+			"inputFormat": null,
+			"expects": "http://www.example.com/featureClass/emergency",
+			"returns": "http://www.example.com/featureClass/emergency",
+			"statusCodes": [
+				{
+				"code": 415,
+				"description": "If the input is an unsupported Media Type"
+				},
+				{
+				"code": 422,
+				"description": "If the input is invalid against the JSON-Schema"
+				},
+				{
+				"code": 201,
+				"description": "Successful insert"
+				}
+			]
+			},
+			{
+			"@type": "hydra:Operation",
+			"method": "DELETE",
+			"label": "Delete Emergency Buildings",
+			"description": null,
+			"inputFormat": null,
+			"expects": null,
+			"returns": "http://www.example.com/featureClass/emergency",
+			"statusCodes": [
+				{
+				"code": 404,
+				"description": "If the Emergency Buildings entity wasn't found."
+				},
+				{
+				"code": 204,
+				"description": "Successful delete"
+				}
+			]
+			}
+		],
+		"supportedProperty": [
+			{
+			"hydra:title": "Name",
+			"hydra:description": "Name of the Emergency building",
+			"required": true,
+			"readonly": true,
+			"writeonly": false
+			},
+			{
+			"hydra:title": "Address",
+			"hydra:description": "Address of the Emergency building",
+			"required": false,
+			"readonly": false,
+			"writeonly": false
+			}
+		]
+		},
+		{
+		"@id": "http://localhost:3001/wfs/buildings",
+		"@type": ["hydra:Class", "featureType"],
+		"ows:name": "buildings",
+		"ows:title": "Buildings",
+		"ows:outputFormats": ["text/html", "application/ext.geo+json"],
+		"type": ["Polygon"],
+        "inputTypes": null,
+        "outputTypes": {
+            "buildings": {
+                "type": {"#set": {"#record": {"geom": "Polygon", "type": "String", "area": "Real"}}}
+            }
+        },
+		"supportedOperation": [
+			{
+			"@type": "hydra:Operation",
+			"method": "GET",
+			"label": "Retrieves Buildings",
+			"description": null,
+			"inputFormat": null,
+			"expects": null,
+			"returns": "http://www.example.com/featureClass/buildings",
+            "preCondition": null,
+            "postCondition": {"#and": [
+                {"#eq": ["buildings.geom.crs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]},
+                {"#eq": ["buildings.geom.dimension", {"#literal": ["x","y"]}]},
+                {"#eq": ["buildings.geom.bbox", {"#literal": [5.90202,51.94901,5.94692,51.98395]}]},
+                {"#eq": ["buildings.geom.bboxFormat", {"#literal": "GeoJSON"}]},
+                {"#eq": ["buildings.geom.bboxCrs", {"#literal": "http://www.opengis.net/def/crs/EPSG/0/4326"}]}
+            ]},
+			"statusCodes": [
+				{
+				"code": 404,
+				"description": "If no Building entity was found."
+				},
+				{
+				"code": 406,
+				"description": "The required media type for output is not supported"
+				},
+				{
+				"code": 200,
+				"description": "Successful retrieval"
+				}
+			]
+			}
+		]
+		}
+	]
+}

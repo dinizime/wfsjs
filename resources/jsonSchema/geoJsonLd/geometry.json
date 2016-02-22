@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://json-schema.org/geojsonld/geometry.json#",
+    "title": "geometry",
+    "description": "One geometry as defined by GeoJSON-LD",
+    "type": "object",
+    "oneOf": [
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/point.json#"
+        },
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/multipoint.json#"
+        },
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/linestring.json#"
+        },
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/multilinestring.json#"
+        },
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/polygon.json#"
+        },
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/multipolygon.json#"
+        },
+        {
+            "$ref": "http://json-schema.org/geojsonld/geometry/geometrycollection.json#"
+        }        
+    ]
+}

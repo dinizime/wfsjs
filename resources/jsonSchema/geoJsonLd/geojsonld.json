@@ -1,0 +1,71 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "id": "http://json-schema.org/geojsonld/geojsonld.json#",
+    "title": "GeoJSON-LD object",
+    "description": "Schema for a GeoJSON-LD object",
+    "type": "object",
+    "properties": {
+        "bbox": { "$ref": "http://json-schema.org/geojsonld/bbox.json#" },
+        "crs": {"type": "string", "format": "uri"}
+    },
+    "oneOf": [
+        { "$ref": "#/definitions/feature" },
+        { "$ref": "#/definitions/featureCollection" }
+    ],
+    "definitions": {
+        "feature": {
+            "title": "Feature",
+            "description": "A GeoJSON-LD feature object",
+            "required": [ "geometry", "properties", "@id", "@type", "type", "id" ],
+            "properties": {
+                "@type": {
+                    "oneOf": [
+                        { "enum": [ "Feature" ] },
+                        { "allOf": [
+                            {"type": "array",
+                             "items": [{"enum": [ "Feature" ] }]},
+                            {"type": "array",
+                             "items": { "type": "string"}}
+                        ]
+                        }
+                    ]
+                },
+                "type": { "enum": [ "Feature" ] },
+                "geometry": {
+                    "oneOf": [
+                        { "type": "null" },
+                        { "$ref": "http://json-schema.org/geojsonld/geometry.json#" }
+                    ]
+                },
+                "properties": { "type": "object" },
+                "@id": { "type": "string", "format": "uri" },
+                "id": {"type": "string"}
+            }
+        },
+        "featureCollection": {
+            "title": "FeatureCollection",
+            "description": "A GeoJSON feature collection",
+            "required": [ "features", "@type", "type" ],
+            "properties": {
+                "@type": {
+                    "oneOf": [
+                        { "enum": [ "FeatureCollection" ] },
+                        { "allOf": [
+                            {"type": "array",
+                             "items": [{"enum": [ "FeatureCollection" ] }]},
+                            {"type": "array",
+                             "items": { "type": "string"}}
+                        ]
+                        }
+                    ]
+                },
+                "type": { "enum": [ "FeatureCollection" ] },
+                "features": {
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/feature" }
+                }
+            }
+        }
+    }
+}
+

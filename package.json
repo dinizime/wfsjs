@@ -1,0 +1,34 @@
+{
+  "name": "wfsjs",
+  "version": "0.0.1",
+  "description": "A simple implementation of a RESTful JSON-oriented OGC Web Feature Service using Node.js",
+  "main": "localhost:1337",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dinizime/wfsjs.git"
+  },
+  "keywords": [
+    "WFS",
+    "OGC"
+  ],
+  "author": "Felipe Diniz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dinizime/wfsjs/issues"
+  },
+  "homepage": "https://github.com/dinizime/wfsjs#readme",
+  "dependencies": {
+    "body-parser": "~1.13.2",
+    "express": "~4.13.1",
+    "jade": "~1.11.0",
+    "jsonld": "^0.4.2",
+    "mongoose": "^4.1.11",
+    "tv4": "^1.2.7",
+    "valid-url": "^1.0.9",
+    "debug": "~2.2.0",
+    "morgan": "~1.6.1",
+  }
+}

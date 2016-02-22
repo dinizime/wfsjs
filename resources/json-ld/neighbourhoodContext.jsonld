@@ -1,0 +1,33 @@
+{
+	"geojson": "http://ld.geojson.org/vocab#",
+	"Feature": "geojson:Feature",
+	"FeatureCollection": "geojson:FeatureCollection",
+	"GeometryCollection": "geojson:GeometryCollection",
+	"LineString": "geojson:LineString",
+	"MultiLineString": "geojson:MultiLineString",
+	"MultiPoint": "geojson:MultiPoint",
+	"MultiPolygon": "geojson:MultiPolygon",
+	"Point": "geojson:Point",
+	"Polygon": "geojson:Polygon",
+	"bbox": {
+		"@container": "@list",
+		"@id": "geojson:bbox"
+	},
+	"coordinates": "geojson:coordinates",
+	"features": {
+		"@container": "@set",
+		"@id": "geojson:features"
+	},
+	"geometry": "geojson:geometry",
+	"properties": "geojson:properties",
+	"crs": {"@id": "geojson:crs", "@type": "@id"},
+	"id": "geojson:id",
+	"type": "geojson:type",
+	"bu_code": "http://example.com/bu_code",
+	"bu_naam": "http://example.com/bu_naam",
+	"gm_naam": "http://example.com/gm_naam",
+	"aant_inw": "http://example.com/aant_inw",
+	"aant_man": "http://example.com/aant_man",
+	"aant_vrouw": "http://example.com/aant_vrouw"
+}
+

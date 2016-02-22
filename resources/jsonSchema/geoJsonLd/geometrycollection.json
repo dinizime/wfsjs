@@ -1,0 +1,26 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "geometry collection as defined by GeoJSON-LD",
+    "type": "object",
+    "id": "http://json-schema.org/geojsonld/geometry/geometrycollection.json#",
+    "title": "GeometryCollection",
+    "required": [ "@type", "geometries" ],
+    "properties": {
+        "@type": {
+            "oneOf": [
+                { "enum": [ "GeometryCollection" ] },
+                { "allOf": [
+                    {"type": "array",
+                        "items": [{"enum": [ "GeometryCollection" ] }]},
+                    {"type": "array",
+                        "items": { "type": "string"}}
+                ]
+                }
+            ]
+        },
+        "geometries": {
+            "type": "array",
+            "items": { "$ref": "http://json-schema.org/geojsonld/geometry.json#" }
+        }
+    }       
+}
