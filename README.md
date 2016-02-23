@@ -4,6 +4,16 @@ A simple implementation of a RESTFul JSON-oriented Web Feature Service (WFS) usi
 
 Data is stored in a MongoDB. Config.json is used to configure the application.
 
+## Sample Data
+
+The folder [data](/data) contain sample data for each of the configure resources in the WFS. They can be inserted in the database by using a POST operation in the resource, with [Postman](https://www.getpostman.com/), for example.
+
+```
+POST http://localhost:3001/wfs/rivers
+Headers: Accept: application/ext.geo+json
+Body: <data from data folder>
+```
+
 ## Dependencies
 * [Node.js](https://nodejs.org/en/)
 * [Express.js](http://expressjs.com/)
