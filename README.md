@@ -2,7 +2,7 @@ WFS.js
 ======
 A simple implementation of a RESTFul JSON-oriented Web Feature Service (WFS) using Node.js.
 
-Data is stored in a MongoDB. Config.json is used to configure the application.
+Data is stored in a MongoDB. [Config.json](https://github.com/dinizime/wfsjs/blob/master/config.json) is used to configure the application.
 
 ## Sample Data
 
@@ -12,6 +12,14 @@ The folder [data](/data) contain sample data for each of the configure resources
 POST http://localhost:3001/wfs/rivers
 Headers: Accept: application/ext.geo+json
 Body: <data/rivers.json>
+```
+
+##Executing Service
+
+After configuring the [Config.json](https://github.com/dinizime/wfsjs/blob/master/config.json) file the service can be started by using [Nodemon](https://github.com/remy/nodemon), and executing the command:
+
+```
+nodemon bin/wwww
 ```
 
 ## Dependencies
