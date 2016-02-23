@@ -11,7 +11,7 @@ The folder [data](/data) contain sample data for each of the configure resources
 ```
 POST http://localhost:3001/wfs/rivers
 Headers: Accept: application/ext.geo+json
-Body: <data from data folder>
+Body: <data/rivers.json>
 ```
 
 ## Dependencies
