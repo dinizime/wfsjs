@@ -1,0 +1,158 @@
+{
+  "@context": {
+    "geojson": "http://ld.geojson.org/vocab#",
+    "Feature": "geojson:Feature",
+    "FeatureCollection": "geojson:FeatureCollection",
+    "GeometryCollection": "geojson:GeometryCollection",
+    "LineString": "geojson:LineString",
+    "MultiLineString": "geojson:MultiLineString",
+    "MultiPoint": "geojson:MultiPoint",
+    "MultiPolygon": "geojson:MultiPolygon",
+    "Point": "geojson:Point",
+    "Polygon": "geojson:Polygon",
+    "bbox": {
+      "@container": "@list",
+      "@id": "geojson:bbox"
+    },
+    "coordinates": "geojson:coordinates",
+    "features": {
+      "@container": "@set",
+      "@id": "geojson:features"
+    },
+    "geometry": "geojson:geometry",
+    "properties": "geojson:properties",
+    "crs": {
+      "@id": "geojson:crs",
+      "@type": "@id"
+    },
+    "id": "geojson:id",
+    "type": "geojson:type"
+  },
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "@type": "Feature",
+      "@id": "http://www.example.com/emergency/1",
+      "id": "1",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "@type": "Point",
+        "coordinates": [
+          5.924549102783203,
+          51.954131213374254
+        ]
+      },
+      "layerID": "emergency"
+    },
+    {
+      "type": "Feature",
+      "@type": "Feature",
+      "@id": "http://www.example.com/emergency/4",
+      "id": "4",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "@type": "Point",
+        "coordinates": [
+          5.926179885864258,
+          51.98128548202468
+        ]
+      },
+      "layerID": "emergency"
+    },
+    {
+      "type": "Feature",
+      "@type": "Feature",
+      "@id": "http://www.example.com/emergency/9",
+      "id": "9",
+      "properties": {},
+      "geometry": {
+        "type": "Point",
+        "@type": "Point",
+        "coordinates": [
+          5.901460647583008,
+          51.982554217750945
+        ]
+      },
+      "layerID": "emergency"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "5",
+        "Address": "5"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.913683474063873,
+          51.96947774348371
+        ],
+        "@type": "Point"
+      },
+      "@id": "http://www.example.com/5",
+      "id": "5",
+      "@type": "Feature",
+      "layerID": "emergency"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "6",
+        "Address": "6"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.914284288883209,
+          51.97931209703793
+        ],
+        "@type": "Point"
+      },
+      "@id": "http://www.example.com/6",
+      "id": "6",
+      "@type": "Feature",
+      "layerID": "emergency"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "8",
+        "Address": "8"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.935312807559967,
+          51.974130824955196
+        ],
+        "@type": "Point"
+      },
+      "@id": "http://www.example.com/8",
+      "id": "8",
+      "@type": "Feature",
+      "layerID": "emergency"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "7",
+        "Address": "7"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          5.942659378051758,
+          51.97461081172588
+        ],
+        "@type": "Point"
+      },
+      "@id": "http://www.example.com/7",
+      "id": "7",
+      "@type": "Feature",
+      "layerID": "emergency"
+    }
+  ]
+}
